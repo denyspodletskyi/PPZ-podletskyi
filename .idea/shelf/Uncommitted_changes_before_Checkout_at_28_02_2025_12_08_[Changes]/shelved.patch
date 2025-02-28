@@ -1,0 +1,27 @@
+Index: Task-01.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>print(\"Числа від 1 до 10:\")\r\nfor i in range(1, 11):\r\n    print(i, end=\" \")\r\nprint(\"\\nПарні числа від 1 до 20:\")\r\nfor i in range(2, 21, 2):\r\n    print(i, end=\" \")\r\nprint(\"\\nЧисла від 10 до 1:\")\r\nfor i in range(10, 0, -1):\r\n    print(i, end=\" \")
+===================================================================
+diff --git a/Task-01.py b/Task-01.py
+--- a/Task-01.py	(revision 03101dc5d4dfc779bf6f1267c325bd11651688bb)
++++ b/Task-01.py	(date 1740737290301)
+@@ -1,9 +1,7 @@
+-print("Числа від 1 до 10:")
+-for i in range(1, 11):
+-    print(i, end=" ")
+-print("\nПарні числа від 1 до 20:")
+-for i in range(2, 21, 2):
+-    print(i, end=" ")
+-print("\nЧисла від 10 до 1:")
+-for i in range(10, 0, -1):
+-    print(i, end=" ")
+\ No newline at end of file
++def fibonacci_seq_generator():
++    a, b = 0, 1
++    while True:
++        a, b = b, a + b
++        while not is_prime(a):
++            a, b = b, a + b
++        yield a
+\ No newline at end of file

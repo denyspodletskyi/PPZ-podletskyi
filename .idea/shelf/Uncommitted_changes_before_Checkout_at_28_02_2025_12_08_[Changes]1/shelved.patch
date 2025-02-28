@@ -1,0 +1,62 @@
+Index: Task-03.py
+===================================================================
+diff --git a/Task-03.py b/Task-03.py
+deleted file mode 100644
+--- a/Task-03.py	(revision 03101dc5d4dfc779bf6f1267c325bd11651688bb)
++++ /dev/null	(revision 03101dc5d4dfc779bf6f1267c325bd11651688bb)
+@@ -1,16 +0,0 @@
+-class Person:
+-    def __init__(self, name):
+-        self.name = name
+-
+-    def greet(self):
+-        return f"Привіт, мене звуть {self.name}"
+-
+-
+-class Student(Person):
+-    def is_student(self):
+-        return True
+-
+-
+-student = Student("Іван")
+-print(student.greet())
+-print("Статус студента:", student.is_student())
+\ No newline at end of file
+Index: Task-04.py
+===================================================================
+diff --git a/Task-04.py b/Task-04.py
+deleted file mode 100644
+--- a/Task-04.py	(revision 03101dc5d4dfc779bf6f1267c325bd11651688bb)
++++ /dev/null	(revision 03101dc5d4dfc779bf6f1267c325bd11651688bb)
+@@ -1,30 +0,0 @@
+-from abc import ABC, abstractmethod
+-
+-
+-class Shape(ABC):
+-    @abstractmethod
+-    def area(self):
+-        pass
+-
+-
+-class Circle(Shape):
+-    def __init__(self, radius):
+-        self.radius = radius
+-
+-    def area(self):
+-        return 3.14159 * self.radius ** 2
+-
+-
+-class Rectangle(Shape):
+-    def __init__(self, width, height):
+-        self.width = width
+-        self.height = height
+-
+-    def area(self):
+-        return self.width * self.height
+-
+-
+-circle = Circle(5)
+-rectangle = Rectangle(4, 6)
+-print("Площа кола:", circle.area())
+-print("Площа прямокутника:", rectangle.area())
+\ No newline at end of file
