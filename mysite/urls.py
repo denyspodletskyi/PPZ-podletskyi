@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
+from polls import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls')),  # Підключення вашого додатку polls
+    path('polls/', include('polls.urls')),
+    path('registered/', views.register_view, name='registered'),
 ]
