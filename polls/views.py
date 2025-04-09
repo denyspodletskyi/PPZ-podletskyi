@@ -4,6 +4,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserLoginForm
 from .models import Question
 from django.contrib.auth.forms import AuthenticationForm
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Question
+from .serializers import QuestionSerializer
 
 
 def question_list(request):
@@ -44,3 +49,11 @@ def logout_view(request):
 @login_required(login_url='/login/')
 def profile_view(request):
     return render(request, 'polls/profile.html')
+
+
+
+class QuestionListView(APIView):
+    def get(self, request):
+        questions = Question.objects.all()  # отримуємо всі питання з бази
+        serializer = QuestionSerializer(questions, many=True)  # серіалізуємо список питань
+        return Response(serializer.data, status=status.HTTP_200_OK)
