@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views
-from django.urls import path
-from .views import register_view
 
 app_name = 'polls'
+
 urlpatterns = [
-    path('', views.question_list, name='question_list'),
-    path('register/', register_view, name='register'),
+    path('register/', views.register_view, name='register'),
+    path('', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('profile/', views.profile_view, name='profile'),
 ]
+
