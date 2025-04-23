@@ -9,6 +9,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Question
 from .serializers import QuestionSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Question
+from .serializers import QuestionSerializer
 
 
 def question_list(request):
@@ -57,3 +61,10 @@ class QuestionListView(APIView):
         questions = Question.objects.all()  # отримуємо всі питання з бази
         serializer = QuestionSerializer(questions, many=True)  # серіалізуємо список питань
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_questions(request):
+    questions = Question.objects.all()
+    serializer = QuestionSerializer(questions, many=True)
+    return Response(serializer.data)
