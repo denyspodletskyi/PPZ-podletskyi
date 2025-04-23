@@ -1,7 +1,14 @@
 from rest_framework import serializers
-from .models import Question  # імпортуйте вашу модель
+from .models import Question, Choice
+
+class ChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = ['id', 'choice_text', 'votes']
 
 class QuestionSerializer(serializers.ModelSerializer):
+    choices = ChoiceSerializer(many=True, read_only=True, source='choice_set')
+
     class Meta:
-        model = Question  # вказуємо модель, яку серіалізуємо
-        fields = '__all__'  # або вказуємо конкретні поля, наприклад: ['id', 'question_text']
+        model = Question
+        fields = ['id', 'question_text', 'pub_date', 'choices']
